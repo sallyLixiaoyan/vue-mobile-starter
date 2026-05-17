@@ -26,6 +26,7 @@
     ".prettierrc",
     ".editorconfig",
     ".npmrc",
+    "pnpm-workspace.yaml",
     ".env",
     ".env.development",
     ".env.production",
