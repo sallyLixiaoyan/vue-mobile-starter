@@ -35,8 +35,8 @@ git add .
 git commit -m "feat: 初始化脚手架"
 
 # 推送到远程仓库
-git remote add origin https://github.com/sallyLixiaoyan/vue-mobile-starter.git
-git push --set-upstream origin master
+git remote add origin https://gitee.com/sally_li/vue-mobile-starter.git
+git push -u origin master
 ```
 
 ## 团队成员创建新项目
@@ -52,14 +52,14 @@ git push --set-upstream origin master
 
 ```bash
 # 在任意目录运行
-npx https://github.com/sallyLixiaoyan/vue-mobile-starter.git create-vue-mobile my-project
+npx https://gitee.com/sally_li/vue-mobile-starter.git create-vue-mobile my-project
 ```
 
 #### 方式二：全局安装后使用
 
 ```bash
 # 全局安装脚手架（只需一次）
-npm install -g https://github.com/sallyLixiaoyan/vue-mobile-starter.git
+npm install -g https://gitee.com/sally_li/vue-mobile-starter.git
 
 # 之后在任意目录创建新项目
 create-vue-mobile my-project
@@ -69,7 +69,7 @@ create-vue-mobile another-project
 #### 方式三：克隆后直接运行
 
 ```bash
-git clone https://github.com/sallyLixiaoyan/vue-mobile-starter.git
+git clone https://gitee.com/sally_li/vue-mobile-starter.git
 cd vue-mobile-starter
 node ./create/index.js
 ```
@@ -91,16 +91,13 @@ node ./create/index.js
 # 进入项目
 cd my-project
 
-# 安装依赖
-pnpm install
-
 # 启动开发
 pnpm dev
 
 # 访问 http://localhost:3000
 ```
 
-> **说明**：创建新项目时会自动初始化 Git，依赖需手动安装。
+> **说明**：脚手架可用 npm/npx 安装，但创建的新项目使用 pnpm 作为包管理器。
 
 ### 发布到 npm（可选）
 
@@ -230,4 +227,5 @@ description: 命令描述
 
 - 新项目不包含 README.md（让团队自己编写）
 - AI 配置文件（`.claude`、`.cursorrules`）会根据用户选择保留或删除
-- 创建新项目时会自动初始化 Git，依赖需手动安装（`pnpm install`）
+- 创建新项目时会自动初始化 Git 并使用 pnpm 安装依赖
+- 脚手架本身可用 npm/npx 安装，无需提前安装 pnpm
