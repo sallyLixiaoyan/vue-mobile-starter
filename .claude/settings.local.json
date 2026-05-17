@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find . -maxdepth 3 -type f -name \"*.json\" -o -name \"*.ts\" -o -name \"*.vue\" -o -name \"*.js\" 2>/dev/null | head -30)",
+      "Bash(pnpm --version 2>/dev/null || echo \"pnpm未安装\")",
+      "Bash(rm -rf node_modules && pnpm install)",
+      "Bash(pnpm typecheck)",
+      "Bash(pnpm approve-builds)",
+      "Bash(pnpm approve-builds --all 2>/dev/null || pnpm config set allow-scripts true && pnpm install)",
+      "Bash(pnpm dev)",
+      "Bash(node ./create/index.js)",
+      "Bash(rm -f AGENTS.md GEMINI.md && ls -la *.md)",
+      "Bash(claude mcp list 2>/dev/null || echo \"无法获取 MCP 配置\")",
+      "WebSearch",
+      "Bash(cat .claude/skills/create-component/skill.md 2>/dev/null || cat .claude/skills/create-component/*.md)",
+      "Bash(cat .claude/skills/create-api/skill.md 2>/dev/null || cat .claude/skills/create-api/*.md)",
+      "Bash(cat .claude/skills/create-test/skill.md 2>/dev/null || cat .claude/skills/create-test/*.md)"
+    ]
+  }
+}

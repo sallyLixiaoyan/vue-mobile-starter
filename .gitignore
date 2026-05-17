@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env.local
+.env.*.local
+*.log
+.DS_Store
+.idea/
+.vscode/
+pnpm-lock.yaml
+
+# Test coverage
+coverage/
+
+# Auto-generated type definitions
+src/types/auto-imports.d.ts
+src/types/components.d.ts
