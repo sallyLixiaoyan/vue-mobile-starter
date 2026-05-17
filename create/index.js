@@ -49,7 +49,6 @@ const SKIP_ITEMS = new Set([
   'create',
   '.DS_Store',
   'pnpm-lock.yaml',
-  'pnpm-workspace.yaml',
   'README.md',
 ])
 
@@ -87,12 +86,8 @@ async function main() {
   console.log(`  Vue 3 移动端项目脚手架`)
   console.log('')
 
-  // 解析命令行参数
-  const args = process.argv.slice(2)
-  const cliProjectName = args[0] && !args[0].startsWith('-') ? args[0] : null
-
-  // 收集用户输入（支持 CLI 参数跳过交互）
-  const answers = await prompts(cliProjectName)
+  // 收集用户输入
+  const answers = await prompts()
 
   // 目标路径
   const targetDir = resolve(process.cwd(), answers.projectName)
@@ -153,10 +148,9 @@ function generateFiles(dir, answers) {
   pkg.name = answers.projectName
   pkg.version = '0.0.1'
   if (answers.description) pkg.description = answers.description
-  // 新项目不需要 bin、files、create script
+  // 新项目不需要 bin 和 files 字段
   delete pkg.bin
   delete pkg.files
-  delete pkg.scripts?.create
   // 新项目使用 pnpm 作为包管理器
   pkg.packageManager = 'pnpm@11.1.2'
   writeFileSync(join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
@@ -165,22 +159,6 @@ function generateFiles(dir, answers) {
   let html = readFileSync(join(dir, 'index.html'), 'utf-8')
   html = html.replace('Vue Mobile Starter', answers.projectTitle)
   writeFileSync(join(dir, 'index.html'), html)
-
-  // .npmrc 文件 - 添加配置解决 pnpm 安全限制
-  const npmrcContent = `# pnpm 配置
-
-# 自动安装 peer dependencies
-auto-install-peers=true
-
-# 严格的 peer dependencies 检查
-strict-peer-dependencies=false
-
-# 允许特定依赖包运行构建脚本（解决 ERR_PNPM_IGNORED_BUILDS）
-onlyBuiltDependencies[]=esbuild
-onlyBuiltDependencies[]=@parcel/watcher
-onlyBuiltDependencies[]=vue-demi
-`
-  writeFileSync(join(dir, '.npmrc'), npmrcContent)
 
   // .env 文件
   const envContent = `# 应用标题
