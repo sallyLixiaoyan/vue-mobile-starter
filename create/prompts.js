@@ -103,7 +103,7 @@ function multiSelect(prompt, options, defaults) {
   })
 }
 
-export async function prompts() {
+export async function prompts(cliProjectName) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -113,29 +113,35 @@ export async function prompts() {
   console.log(`${c.bold}请输入项目配置:${c.reset}`)
   console.log('')
 
-  // 项目名称（必填）
-  let projectName = await question(rl, '项目名称 (kebab-case，必填)', 'my-mobile-app')
+  // 项目名称（必填）- 支持 CLI 参数
+  let projectName = cliProjectName || await question(rl, '项目名称 (kebab-case，必填)', 'my-mobile-app')
   while (!projectName) {
     projectName = await question(rl, '项目名称 (必填)', 'my-mobile-app')
   }
 
   // 项目标题
-  const projectTitle = await question(rl, '项目标题', projectName)
+  const projectTitle = cliProjectName
+    ? projectName // CLI 模式下使用项目名作为标题
+    : await question(rl, '项目标题', projectName)
 
   // 项目描述
-  const description = await question(rl, '项目描述', '')
+  const description = cliProjectName
+    ? '' // CLI 模式下跳过描述
+    : await question(rl, '项目描述', '')
 
   rl.close()
 
-  // AI 工具选择（多选）
-  const aiTools = await multiSelect(
-    'AI 编码工具',
-    [
-      { label: 'Claude Code (.claude)', value: 'claude' },
-      { label: 'Cursor (.cursorrules)', value: 'cursor' },
-    ],
-    ['claude'],
-  )
+  // AI 工具选择（多选）- CLI 模式下默认选择 Claude
+  const aiTools = cliProjectName
+    ? ['claude']
+    : await multiSelect(
+      'AI 编码工具',
+      [
+        { label: 'Claude Code (.claude)', value: 'claude' },
+        { label: 'Cursor (.cursorrules)', value: 'cursor' },
+      ],
+      ['claude'],
+    )
 
   return {
     projectName,

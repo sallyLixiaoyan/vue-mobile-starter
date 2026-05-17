@@ -14,7 +14,9 @@
       "WebSearch",
       "Bash(cat .claude/skills/create-component/skill.md 2>/dev/null || cat .claude/skills/create-component/*.md)",
       "Bash(cat .claude/skills/create-api/skill.md 2>/dev/null || cat .claude/skills/create-api/*.md)",
-      "Bash(cat .claude/skills/create-test/skill.md 2>/dev/null || cat .claude/skills/create-test/*.md)"
+      "Bash(cat .claude/skills/create-test/skill.md 2>/dev/null || cat .claude/skills/create-test/*.md)",
+      "Bash(git push origin master)",
+      "Bash(git add .npmrc && git commit -m \"fix: 简化 .npmrc 配置，解决跨平台兼容问题\" && git push origin master)"
     ]
   }
 }
