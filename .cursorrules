@@ -1,75 +1,13 @@
 # Vue Mobile Starter - Cursor Rules
 
-> 详细规则请查看 `.cursor/rules/` 目录
+> 详细规则请参考 `CLAUDE.md` 和 `.claude/rules/` 目录
 
-## Project Overview
-Vue 3 移动端项目脚手架，使用 Vant 4 UI 组件库，支持移动端适配。
+本项目使用 Vue 3 + Vant 4 + TypeScript，开发前请阅读 CLAUDE.md 了解项目规范。
 
-## Tech Stack
-- Vue 3.4+ with `<script setup lang="ts">`
-- Vite 5+ build tool
-- TypeScript 5+ (strict mode)
-- Vant 4 UI library
-- Sass (scoped) + PostCSS px-to-viewport
-- Pinia state management
-- Vue Router 4
-- Vitest + @vue/test-utils
+## 快速参考
 
-## Code Style
-
-### Components
-- Use `<script setup lang="ts">` only
-- Props must use `withDefaults` + TypeScript interface
-- Events must use `defineEmits` with types
-- No `any` types allowed
-
-### Styling
-- Use `<style lang="scss" scoped>`
-- Reference design tokens from docs/design-tokens.md
-- Use `:deep()` for Vant overrides
-- px auto-converts to vw via PostCSS
-
-### State
-- Pinia for global state
-- ref/reactive for local state
-- Never modify store directly, use actions
-
-### API
-- All requests from src/api/
-- Use shared axios wrapper
-- Define request/response types
-
-## Naming Conventions
-- Components: PascalCase (UserCard.vue)
-- Composables: camelCase with use (useAuth.ts)
-- Utils: camelCase (formatDate.ts)
-- Types: PascalCase (User.ts)
-- Stores: camelCase with Store (authStore.ts)
-- CSS: kebab-case ($bg-color)
-
-## Project Structure
-src/
-├── api/          # API requests
-├── components/   # Shared components
-├── composables/  # Vue composables
-├── layouts/      # Layout components
-├── pages/        # Page components
-├── stores/       # Pinia stores
-├── styles/       # Global styles
-├── types/        # TypeScript types
-└── utils/        # Utility functions
-
-## Important Rules
-
-### DO
-- Use Vant built-in components
-- Check VueUse before writing custom composables
-- Write unit tests
-- Use Conventional Commits
-
-### DON'T
-- Use console.log (use logger)
-- Manipulate DOM directly
-- Inline complex template logic
-- Async in setup() (use onMounted)
-- Hardcode pixels or colors
+- 技术栈: Vue 3.4+ / Vite 5+ / TypeScript 5+ / Vant 4 / Pinia
+- 包管理: pnpm
+- 组件风格: `<script setup lang="ts">`
+- 样式: `<style lang="scss" scoped>` + Design Tokens
+- 常用命令: `pnpm dev` / `pnpm build` / `pnpm test` / `pnpm typecheck`
