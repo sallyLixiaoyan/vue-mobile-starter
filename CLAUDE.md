@@ -23,6 +23,47 @@ src/
 └── utils/        # 工具函数
 ```
 
+## API 响应格式
+
+所有 API 返回统一格式：
+
+```typescript
+interface ApiResponse<T> {
+  code: number      // 状态码，0 表示成功
+  message: string   // 提示信息
+  data: T           // 业务数据
+}
+```
+
+## AI 辅助功能
+
+### Skills（技能）
+
+位于 `.claude/skills/`，用于复杂任务的完整流程：
+
+| Skill | 用途 |
+|-------|------|
+| `create-api` | 创建 API 模块 |
+| `create-component` | 创建 Vue 组件 |
+| `create-test` | 编写单元测试 |
+| `code-review` | 代码审查 |
+| `explore` | 探索代码库 |
+| `figma-to-code` | Figma 设计转代码 |
+| `ui-component` | 创建 UI 组件 |
+
+### Commands（命令）
+
+位于 `.claude/commands/`，用于快速执行常见操作：
+
+| Command | 用途 |
+|---------|------|
+| `git-commit` | 生成规范的提交信息 |
+| `new-page` | 创建新页面 |
+
+### Rules（规则）
+
+位于 `.claude/rules/`，定义各模块的规范和约束。
+
 ## 编码规范
 
 ### 组件

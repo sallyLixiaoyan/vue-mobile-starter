@@ -3,16 +3,19 @@
   "description": "Vue 3 移动端开发脚手架 - AI 驱动的工作流",
   "permissions": {
     "allow": [
-      "Bash(npm run dev:*)",
-      "Bash(npm run build:*)",
-      "Bash(npm run test:*)",
-      "Bash(npm install:*)",
-      "Bash(npx eslint:*)",
-      "Bash(npx prettier:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm preview:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(claude plugin:*)",
-      "Bash(claude mcp:*)"
+      "Bash(git push:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
     ],
     "deny": [
       "Bash(rm -rf:*)",
@@ -20,15 +23,9 @@
     ]
   },
   "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "npx eslint --fix {{file_path}}"
-      }
-    ],
     "PreCommit": [
       {
-        "command": "npm run typecheck && npm run lint"
+        "command": "pnpm typecheck && pnpm lint:check"
       }
     ]
   }
