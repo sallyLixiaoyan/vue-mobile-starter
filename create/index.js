@@ -117,21 +117,15 @@ async function main() {
     log.warn('Git 初始化失败，请手动执行: git init')
   }
 
-  // Step 4: 安装依赖
-  log.step(4, '安装依赖...')
-  try {
-    execSync('pnpm install', { cwd: targetDir, stdio: 'inherit' })
-    log.success('依赖安装完成')
-  } catch {
-    log.warn('pnpm install 失败，请手动安装: cd ' + answers.projectName + ' && pnpm install')
-  }
-
   // 完成
   console.log('')
   console.log(`${c.bold}${c.green}  项目创建成功！${c.reset}`)
   console.log('')
   console.log(`  进入项目:`)
   console.log(`    ${c.cyan}cd ${answers.projectName}${c.reset}`)
+  console.log('')
+  console.log(`  安装依赖:`)
+  console.log(`    ${c.cyan}pnpm install${c.reset}`)
   console.log('')
   console.log(`  启动开发:`)
   console.log(`    ${c.cyan}pnpm dev${c.reset}`)
